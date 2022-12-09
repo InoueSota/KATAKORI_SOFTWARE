@@ -75,11 +75,6 @@ void Screen::DrawCircle(Vec2 Position, float radius, unsigned int color, FillMod
 }
 
 
-void Screen::DrawSquare(Vec2 Position, float Radius, unsigned int color, FillMode fillMode) {
-	DrawRectAngle(Position, Radius, Radius, color, fillMode);
-}
-
-
 void Screen::DrawRectAngle(Vec2 Position, float Width, float Height, unsigned int color, FillMode fillMode) {
 	Quad OriginalPosition = RectAssign(Width, Height);
 	Quad Rect = Transform(OriginalPosition, MakeAffineMatrix({ mZoom, mZoom }, 0.0f, ScreenTransform(Position)));
@@ -92,6 +87,11 @@ void Screen::DrawRectAngle(Vec2 Position, float Width, float Height, unsigned in
 		Novice::DrawLine((int)Rect.RightTop.x, (int)Rect.RightTop.y, (int)Rect.RightBottom.x, (int)Rect.RightBottom.y, color);
 		Novice::DrawLine((int)Rect.LeftBottom.x, (int)Rect.LeftBottom.y, (int)Rect.RightBottom.x, (int)Rect.RightBottom.y, color);
 	}
+}
+
+
+void Screen::DrawSquare(Vec2 Position, float Radius, unsigned int color, FillMode fillMode) {
+	DrawRectAngle(Position, Radius, Radius, color, fillMode);
 }
 
 
