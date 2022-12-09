@@ -76,17 +76,7 @@ void Screen::DrawCircle(Vec2 Position, float radius, unsigned int color, FillMod
 
 
 void Screen::DrawSquare(Vec2 Position, float Radius, unsigned int color, FillMode fillMode) {
-	Quad OriginalPosition = SquareAssign(Radius);
-	Quad Rect = Transform(OriginalPosition, MakeAffineMatrix({ mZoom, mZoom }, 0.0f, ScreenTransform(Position)));
-	if (fillMode == kFillModeSolid){
-		Novice::DrawQuad((int)Rect.LeftTop.x, (int)Rect.LeftTop.y, (int)Rect.RightTop.x, (int)Rect.RightTop.y, (int)Rect.LeftBottom.x, (int)Rect.LeftBottom.y, (int)Rect.RightBottom.x, (int)Rect.RightBottom.y, 0, 0, 0, 0, 0, color);
-	}
-	else{
-		Novice::DrawLine((int)Rect.LeftTop.x, (int)Rect.LeftTop.y, (int)Rect.RightTop.x, (int)Rect.RightTop.y, color);
-		Novice::DrawLine((int)Rect.LeftTop.x, (int)Rect.LeftTop.y, (int)Rect.LeftBottom.x, (int)Rect.LeftBottom.y, color);
-		Novice::DrawLine((int)Rect.RightTop.x, (int)Rect.RightTop.y, (int)Rect.RightBottom.x, (int)Rect.RightBottom.y, color);
-		Novice::DrawLine((int)Rect.LeftBottom.x, (int)Rect.LeftBottom.y, (int)Rect.RightBottom.x, (int)Rect.RightBottom.y, color);
-	}
+	DrawRectAngle(Position, Radius, Radius, color, fillMode);
 }
 
 
