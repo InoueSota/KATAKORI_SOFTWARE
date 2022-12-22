@@ -6,7 +6,7 @@ const char kWindowTitle[] = "LC1A_03_";
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
-	Novice::Initialize(kWindowTitle, 1280, 720);
+	Novice::Initialize(kWindowTitle, Screen::kWindowWidth, Screen::kWindowHeight);
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -15,6 +15,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		// キー入力を受け取る
 		Key::Update();
+
+		//コントローラー
+		Controller::SetState();
 
 		///
 		/// ↓更新処理ここから
@@ -26,6 +29,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case INGAME:
 
+			player.Update();
+
+			//スクロール値をアップデートする
+			screen.SetScroll(player);
+
+			//線の位置を画面内に固定する
+			ingame.DebagUpdate(player);
 
 			break;
 		case OUTGAME:
@@ -55,11 +65,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		switch (scene)
 		{
 		case TITLE:
+			break;
+		case INGAME:
+
+			ingame.BackGroundDraw();
+			ingame.DebagDraw(screen);
 
 			player.Draw(screen);
 
-			break;
-		case INGAME:
 			break;
 		case OUTGAME:
 			break;

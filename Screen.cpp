@@ -3,14 +3,15 @@
 #include "Quad.h"
 #include "Function.h"
 #include "Key.h"
+#include "Player.h"
 
 
 
 void Screen::Init() {
-	mWorldCenter = { 0.0f, 0.0f };
-	mScroll = { 0.0f, 0.0f };
+	mWorldCenter = { kWindowWidth / 2, kWindowHeight / 2 };
+	mScroll.setZero();
 	mZoom = 1.0f;
-	mScreenShake = { 0.0f, 0.0f };
+	mScreenShake.setZero();
 };
 
 void Screen::SetShake(int min, int max, bool condition) {
@@ -41,6 +42,13 @@ void Screen::SetShake(int minX, int maxX, int minY, int maxY, bool condition) {
 
 }
 
+void Screen::SetScroll(Player& player) {
+
+	mScroll.x =  player.mPosition.x;
+	mScroll.y = -player.mPosition.y;
+
+}
+
 void Screen::SetZoom() {
 
 	if (Key::IsPress(DIK_UP))
@@ -56,6 +64,13 @@ void Screen::SetZoom() {
 
 
 //--------------------------------------------------------------------------------------------//
+
+
+void Screen::DrawLine(Vec2 startposition, Vec2 endposition, unsigned int color) {
+	startposition = ScreenTransform(startposition);
+	endposition = ScreenTransform(endposition);
+	Novice::DrawLine((int)startposition.x, (int)startposition.y, (int)endposition.x, (int)endposition.y, color);
+}
 
 
 void Screen::DrawBox(Vec2 Position, float w, float h, float angle, unsigned int color, FillMode fillMode) {
@@ -90,8 +105,8 @@ void Screen::DrawRectAngle(Vec2 Position, float Width, float Height, unsigned in
 }
 
 
-void Screen::DrawSquare(Vec2 Position, float Radius, unsigned int color, FillMode fillMode) {
-	DrawRectAngle(Position, Radius, Radius, color, fillMode);
+void Screen::DrawSquare(Vec2 Position, float size, unsigned int color, FillMode fillMode) {
+	DrawRectAngle(Position, size, size, color, fillMode);
 }
 
 
@@ -102,6 +117,6 @@ Vec2 Screen::ScreenTransform(Vec2 Position) {
 
 	return{
 		Position.x * mZoom - mScroll.x + mWorldCenter.x + mScreenShake.x,
-		Position.y * mZoom - mScroll.y + mWorldCenter.y + mScreenShake.y
+		Position.y * mZoom * -1 - mScroll.y + mWorldCenter.y + mScreenShake.y
 	};
 }

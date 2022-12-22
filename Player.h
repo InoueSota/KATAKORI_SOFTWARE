@@ -14,8 +14,15 @@ public:
 	void Update();
 	void Draw(Screen& screen);
 
+	//ƒpƒ‰ƒ[ƒ^
 	Vec2 mPosition;
-	float mRadius;
+	Vec2 mVelocity;
+	float mSize;
+
+	//’ÊíˆÚ“® = NormalMove
+	Vec2 mNormalVelocity;
+	float mNormalMag;
+	void NormalMove();
 
 };
 

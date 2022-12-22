@@ -2,12 +2,13 @@
 #include <Novice.h>
 #include "Vec2.h"
 
+class Player;
 class Screen
 {
 public:
 
-	static constexpr int kWindowWidth = 480;
-	static constexpr int kWindowHeight = 320;
+	static constexpr int kWindowWidth = 1280;
+	static constexpr int kWindowHeight = 720;
 
 	Screen() {
 		Init();
@@ -47,6 +48,11 @@ public:
 	void SetShake(int minX, int maxX, int minY, int maxY, bool condition);
 
 	/// <summary>
+	/// スクロール
+	/// </summary>
+	void SetScroll(Player& player);
+
+	/// <summary>
 	/// ズーム
 	/// </summary>
 	void SetZoom();
@@ -54,6 +60,14 @@ public:
 
 	//--------------------------------------------------------------------------------------------//
 
+
+	/// <summary>
+	/// 線を描画する
+	/// </summary>
+	/// <param name="startposition">描画する線の始点座標</param>
+	/// <param name="endposition">描画する線の終点座標</param>
+	/// <param name="color">描画する四角形の色</param>
+	void DrawLine(Vec2 startposition, Vec2 endposition, unsigned int color = WHITE);
 
 	/// <summary>
 	/// 四角形を描画する
@@ -89,17 +103,17 @@ public:
 	/// 正方形を描画する
 	/// </summary>
 	/// <param name="position">中心座標</param>
-	/// <param name="radius">半径</param>
+	/// <param name="size">大きさ(= 直径)</param>
 	/// <param name="color">描画するスプライトの色</param>
 	/// <param name="fillMode">塗りつぶしモード</param>
-	void DrawSquare(Vec2 position, float radius, unsigned int color = WHITE, FillMode fillMode = kFillModeSolid);
+	void DrawSquare(Vec2 position, float size, unsigned int color = WHITE, FillMode fillMode = kFillModeSolid);
 
 	/// <summary>
 	/// 長方形を描画する
 	/// </summary>
 	/// <param name="position">中心座標</param>
-	/// <param name="Width">横幅</param>
-	/// <param name="Height">縦幅</param>
+	/// <param name="width">横幅</param>
+	/// <param name="height">縦幅</param>
 	/// <param name="color">描画するスプライトの色</param>
 	/// <param name="fillMode">塗りつぶしモード</param>
 	void DrawRectAngle(Vec2 position, float width, float height, unsigned int color = WHITE, FillMode fillMode = kFillModeSolid);

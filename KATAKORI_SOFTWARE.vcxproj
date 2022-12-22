@@ -99,7 +99,9 @@
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\WinApp.cpp" />
     <ClCompile Include="C:\KamataEngine\DirectXGame\scene\GameScene.cpp" />
     <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp" />
+    <ClCompile Include="ControllerInput.cpp" />
     <ClCompile Include="Function.cpp" />
+    <ClCompile Include="Ingame.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatVec.cpp" />
@@ -135,7 +137,9 @@
     <ClInclude Include="C:\KamataEngine\DirectXGame\input\Input.h" />
     <ClInclude Include="C:\KamataEngine\DirectXGame\scene\GameScene.h" />
     <ClInclude Include="C:\KamataEngine\Adapter\Novice.h" />
+    <ClInclude Include="ControllerInput.h" />
     <ClInclude Include="Function.h" />
+    <ClInclude Include="Ingame.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MatVec.h" />
