@@ -24,6 +24,26 @@ public:
 	float mNormalMag;
 	void NormalMove();
 
+	//ダッシュ = Dush
+	Vec2 mDushVelocity;
+	float mDushMag;
+	void Dush();
+
+	//マーキング = Mark
+	bool mIsMarkActive;
+	Vec2 mMarkPosition;
+	static constexpr int kMarkTimeLimit = 300;
+	int mMarkFrame;
+	void Mark();
+
+	//ストライク = Strike
+	bool mIsStrikeActive;
+	float mStrikeEasingt;
+	float mStrikeEasingtIncrementValue;
+	Vec2 mStrikeStartPosition;
+	Vec2 mStrikeEndPosition;
+	void Strike();
+
 };
 
 

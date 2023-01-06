@@ -100,6 +100,7 @@
     <ClCompile Include="C:\KamataEngine\DirectXGame\scene\GameScene.cpp" />
     <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp" />
     <ClCompile Include="ControllerInput.cpp" />
+    <ClCompile Include="Easing.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="Ingame.cpp" />
     <ClCompile Include="Key.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="C:\KamataEngine\DirectXGame\scene\GameScene.h" />
     <ClInclude Include="C:\KamataEngine\Adapter\Novice.h" />
     <ClInclude Include="ControllerInput.h" />
+    <ClInclude Include="Easing.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="Ingame.h" />
     <ClInclude Include="Key.h" />

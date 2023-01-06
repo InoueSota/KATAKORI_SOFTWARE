@@ -44,8 +44,17 @@ void Screen::SetShake(int minX, int maxX, int minY, int maxY, bool condition) {
 
 void Screen::SetScroll(Player& player) {
 
-	mScroll.x =  player.mPosition.x;
-	mScroll.y = -player.mPosition.y;
+	if (!player.mIsStrikeActive)
+	{
+		mScroll.x += ( player.mPosition.x - mScroll.x) * 0.05f;
+		mScroll.y += (-player.mPosition.y - mScroll.y) * 0.05f;
+	}
+	else 
+	{
+		mScroll.x += ( player.mPosition.x - mScroll.x) * 0.1f;
+		mScroll.y += (-player.mPosition.y - mScroll.y) * 0.1f;
+	}
+	
 
 }
 

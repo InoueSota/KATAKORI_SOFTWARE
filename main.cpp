@@ -31,11 +31,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			player.Update();
 
-			//スクロール値をアップデートする
+			//スクロール値をアップデートする（徐々に行う）
 			screen.SetScroll(player);
 
 			//線の位置を画面内に固定する
-			ingame.DebagUpdate(player);
+			//ingame.DebagUpdate(player);
 
 			break;
 		case OUTGAME:
