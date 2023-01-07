@@ -8,6 +8,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// ライブラリの初期化
 	Novice::Initialize(kWindowTitle, Screen::kWindowWidth, Screen::kWindowHeight);
 
+	//画像読み込み
+	int explanation = Novice::LoadTexture("./Resources/Debug/Explanation.png");
+
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
@@ -68,10 +71,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case INGAME:
 
+			//背景描画
 			ingame.BackGroundDraw();
+			//グリッド線描画
 			ingame.DebagDraw(screen);
 
 			player.Draw(screen);
+
+			//制作中の操作説明を一時的に描画する
+			Novice::DrawSprite(Screen::kWindowWidth - 420, Screen::kWindowHeight - 220, explanation, 1, 1, 0.0f, WHITE);
 
 			break;
 		case OUTGAME:

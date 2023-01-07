@@ -145,7 +145,7 @@ void Player::Strike() {
 			//増加量を距離に応じて変えるための計算
 			float tmpValue = tmpDistance / 100;
 
-			//0.5以下にする
+			// n / tmpValue のとき、nは距離が100のときのEasingtの増加量になる
 			mStrikeEasingtIncrementValue = 0.15f / tmpValue;
 
 			//イージング時の始点と終点の設定
