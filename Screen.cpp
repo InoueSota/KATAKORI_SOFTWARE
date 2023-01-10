@@ -119,6 +119,13 @@ void Screen::DrawSquare(Vec2 Position, float size, unsigned int color, FillMode 
 }
 
 
+void Screen::DrawPicture(Vec2 Position, float size, float angle, float srcW, float srcH, float textureHandle, unsigned int color) {
+	Quad OriginalPosition = RectAssign(size, size);
+	Quad Rect = Transform(OriginalPosition, MakeAffineMatrix({ mZoom, mZoom }, angle, ScreenTransform(Position)));
+	Novice::DrawQuad((int)Rect.LeftTop.x, (int)Rect.LeftTop.y, (int)Rect.RightTop.x, (int)Rect.RightTop.y, (int)Rect.LeftBottom.x, (int)Rect.LeftBottom.y, (int)Rect.RightBottom.x, (int)Rect.RightBottom.y, 0, 0, srcW, srcH, textureHandle, color);
+}
+
+
 //--------------------------------------------------------------------------------------------//
 
 

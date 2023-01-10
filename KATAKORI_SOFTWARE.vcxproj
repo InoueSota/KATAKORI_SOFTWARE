@@ -101,6 +101,7 @@
     <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp" />
     <ClCompile Include="ControllerInput.cpp" />
     <ClCompile Include="Easing.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="Ingame.cpp" />
     <ClCompile Include="Key.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="C:\KamataEngine\Adapter\Novice.h" />
     <ClInclude Include="ControllerInput.h" />
     <ClInclude Include="Easing.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="Ingame.h" />
     <ClInclude Include="Key.h" />

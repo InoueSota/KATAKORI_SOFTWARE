@@ -1,6 +1,6 @@
 ﻿#include "main.h"
 
-const char kWindowTitle[] = "LC1A_03_";
+const char kWindowTitle[] = "トゲ";
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -32,9 +32,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		case INGAME:
 
+			//プレイヤーアップデート
 			player.Update();
 
-			//スクロール値をアップデートする（徐々に行う）
+			//敵アップデート
+			snake.Update();
+
+			//スクロール値をアップデートする
 			screen.SetScroll(player);
 
 			//線の位置を画面内に固定する
@@ -75,7 +79,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			ingame.BackGroundDraw();
 			//グリッド線描画
 			ingame.DebagDraw(screen);
-
+			//敵描画
+			snake.Draw(screen);
+			//プレイヤー描画
 			player.Draw(screen);
 
 			//制作中の操作説明を一時的に描画する

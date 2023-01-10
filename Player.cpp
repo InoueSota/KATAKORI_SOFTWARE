@@ -142,26 +142,36 @@ void Player::Strike() {
 			//マークとの距離を求める
 			float tmpDistance = (mMarkPosition - mPosition).Length();
 
-			//増加量を距離に応じて変えるための計算
-			float tmpValue = tmpDistance / 100;
+			//距離が0だったら中止する
+			if (tmpDistance == 0){
+				mIsMarkActive = false;
+				mIsStrikeActive = false;
+			}
+			//距離が0じゃないとき
+			else {
+				//増加量を距離に応じて変えるための計算
+				float tmpValue = tmpDistance / 100;
 
-			// n / tmpValue のとき、nは距離が100のときのEasingtの増加量になる
-			mStrikeEasingtIncrementValue = 0.15f / tmpValue;
+				// n / tmpValue のとき、nは距離が100のときのEasingtの増加量になる
+				mStrikeEasingtIncrementValue = 0.15f / tmpValue;
 
-			//イージング時の始点と終点の設定
-			mStrikeStartPosition = mPosition;
-			mStrikeEndPosition = mMarkPosition;
+				//イージング時の始点と終点の設定
+				mStrikeStartPosition = mPosition;
+				mStrikeEndPosition = mMarkPosition;
 
-			//フラグをtrueにする
-			mIsStrikeActive = true;
+				//フラグをtrueにする
+				mIsStrikeActive = true;
+			}
 		}
 	}
 
 	if (mIsStrikeActive){
 
+		//イージング移動
 		mStrikeEasingt = EasingClamp(mStrikeEasingtIncrementValue, mStrikeEasingt);
 		mPosition = EasingMove(mStrikeStartPosition, mStrikeEndPosition, easeInSine(mStrikeEasingt));
 
+		//移動が終了したら
 		if (mStrikeEasingt == 1.0f){
 			mIsMarkActive = false;
 			mIsStrikeActive = false;

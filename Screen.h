@@ -118,6 +118,18 @@ public:
 	/// <param name="fillMode">塗りつぶしモード</param>
 	void DrawRectAngle(Vec2 position, float width, float height, unsigned int color = WHITE, FillMode fillMode = kFillModeSolid);
 
+	/// <summary>
+	/// 静止画（正方形）を描画する
+	/// </summary>
+	/// <param name="position">中心座標</param>
+	/// <param name="size">大きさ(= 直径)</param>
+	/// <param name="angle">傾き</param>
+	/// <param name="srcW">画像上の描画したい範囲横幅</param>
+	/// <param name="srcH">画像上の描画したい範囲縦幅</param>
+	/// <param name="textureHandle">テクスチャのハンドル</param>
+	/// <param name="color">描画するスプライトの色</param>
+	void DrawPicture(Vec2 position, float size, float angle, float srcW, float srcH, float textureHandle, unsigned int color = WHITE);
+
 
 	//--------------------------------------------------------------------------------------------//
 
